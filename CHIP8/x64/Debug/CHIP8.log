@@ -1,0 +1,10 @@
+﻿  chip.cpp
+  CPU.cpp
+D:\Programming\Practice\CHIP8\CHIP8\CPU.cpp(4,111): warning C4244: 'argument': conversion from '_Rep' to 'unsigned int', possible loss of data
+D:\Programming\Practice\CHIP8\CHIP8\CPU.cpp(4,111): warning C4244:         with
+D:\Programming\Practice\CHIP8\CHIP8\CPU.cpp(4,111): warning C4244:         [
+D:\Programming\Practice\CHIP8\CHIP8\CPU.cpp(4,111): warning C4244:             _Rep=std::chrono::system_clock::rep
+D:\Programming\Practice\CHIP8\CHIP8\CPU.cpp(4,111): warning C4244:         ]
+  main.cpp
+  Generating Code...
+  CHIP8.vcxproj -> D:\Programming\Practice\CHIP8\x64\Debug\CHIP8.exe
