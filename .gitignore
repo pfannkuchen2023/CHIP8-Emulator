@@ -1,0 +1,29 @@
+# Build results
+*.obj
+*.exe
+*.log
+*.pdb
+*.ilk
+*.idb
+*.tmp
+*.cache
+*.vspscc
+*.vssscc
+*.suo
+*.user
+*.VC.db
+*.VC.opendb
+*.ipch/
+*.aps
+
+# Visual Studio folders
+.vs/
+Debug/
+Release/
+x64/
+ipch/
+out/
+
+# Other
+*.sdf
+*.opensdf
