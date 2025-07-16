@@ -3,40 +3,40 @@
   "WorkspaceRootPath": "D:\\Programming\\Practice\\CHIP8\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{150F1F7A-DA1A-4383-A677-F888D1589F64}|CHIP8\\CHIP8.vcxproj|D:\\Programming\\Practice\\CHIP8\\CHIP8\\display.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{150F1F7A-DA1A-4383-A677-F888D1589F64}|CHIP8\\CHIP8.vcxproj|solutionrelative:CHIP8\\display.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{150F1F7A-DA1A-4383-A677-F888D1589F64}|CHIP8\\CHIP8.vcxproj|D:\\Programming\\Practice\\CHIP8\\CHIP8\\CPU.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{150F1F7A-DA1A-4383-A677-F888D1589F64}|CHIP8\\CHIP8.vcxproj|solutionrelative:CHIP8\\CPU.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{150F1F7A-DA1A-4383-A677-F888D1589F64}|CHIP8\\CHIP8.vcxproj|D:\\Programming\\Practice\\CHIP8\\CHIP8\\CPU.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{150F1F7A-DA1A-4383-A677-F888D1589F64}|CHIP8\\CHIP8.vcxproj|solutionrelative:CHIP8\\CPU.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{150F1F7A-DA1A-4383-A677-F888D1589F64}|CHIP8\\CHIP8.vcxproj|D:\\Programming\\Practice\\CHIP8\\CHIP8\\chip.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{150F1F7A-DA1A-4383-A677-F888D1589F64}|CHIP8\\CHIP8.vcxproj|solutionrelative:CHIP8\\chip.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{150F1F7A-DA1A-4383-A677-F888D1589F64}|CHIP8\\CHIP8.vcxproj|D:\\Programming\\Practice\\CHIP8\\CHIP8\\constants.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{150F1F7A-DA1A-4383-A677-F888D1589F64}|CHIP8\\CHIP8.vcxproj|solutionrelative:CHIP8\\constants.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{150F1F7A-DA1A-4383-A677-F888D1589F64}|CHIP8\\CHIP8.vcxproj|D:\\Programming\\Practice\\CHIP8\\CHIP8\\CPU.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{150F1F7A-DA1A-4383-A677-F888D1589F64}|CHIP8\\CHIP8.vcxproj|solutionrelative:CHIP8\\CPU.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{150F1F7A-DA1A-4383-A677-F888D1589F64}|CHIP8\\CHIP8.vcxproj|D:\\Programming\\Practice\\CHIP8\\CHIP8\\display.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{150F1F7A-DA1A-4383-A677-F888D1589F64}|CHIP8\\CHIP8.vcxproj|solutionrelative:CHIP8\\display.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{150F1F7A-DA1A-4383-A677-F888D1589F64}|CHIP8\\CHIP8.vcxproj|D:\\Programming\\Practice\\CHIP8\\CHIP8\\constants.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{150F1F7A-DA1A-4383-A677-F888D1589F64}|CHIP8\\CHIP8.vcxproj|solutionrelative:CHIP8\\constants.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{150F1F7A-DA1A-4383-A677-F888D1589F64}|CHIP8\\CHIP8.vcxproj|D:\\Programming\\Practice\\CHIP8\\CHIP8\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{150F1F7A-DA1A-4383-A677-F888D1589F64}|CHIP8\\CHIP8.vcxproj|solutionrelative:CHIP8\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{150F1F7A-DA1A-4383-A677-F888D1589F64}|CHIP8\\CHIP8.vcxproj|D:\\Programming\\Practice\\CHIP8\\CHIP8\\chip.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{150F1F7A-DA1A-4383-A677-F888D1589F64}|CHIP8\\CHIP8.vcxproj|solutionrelative:CHIP8\\chip.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{150F1F7A-DA1A-4383-A677-F888D1589F64}|CHIP8\\CHIP8.vcxproj|D:\\Programming\\Practice\\CHIP8\\CHIP8\\CPU.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{150F1F7A-DA1A-4383-A677-F888D1589F64}|CHIP8\\CHIP8.vcxproj|solutionrelative:CHIP8\\CPU.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{150F1F7A-DA1A-4383-A677-F888D1589F64}|CHIP8\\CHIP8.vcxproj|D:\\Programming\\Practice\\CHIP8\\CHIP8\\constants.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{150F1F7A-DA1A-4383-A677-F888D1589F64}|CHIP8\\CHIP8.vcxproj|solutionrelative:CHIP8\\constants.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{150F1F7A-DA1A-4383-A677-F888D1589F64}|CHIP8\\CHIP8.vcxproj|D:\\Programming\\Practice\\CHIP8\\CHIP8\\display.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{150F1F7A-DA1A-4383-A677-F888D1589F64}|CHIP8\\CHIP8.vcxproj|solutionrelative:CHIP8\\display.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{150F1F7A-DA1A-4383-A677-F888D1589F64}|CHIP8\\CHIP8.vcxproj|D:\\Programming\\Practice\\CHIP8\\CHIP8\\chip.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{150F1F7A-DA1A-4383-A677-F888D1589F64}|CHIP8\\CHIP8.vcxproj|solutionrelative:CHIP8\\chip.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -49,16 +49,85 @@
           "SelectedChildIndex": 4,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
+              "Title": "CPU.h",
+              "DocumentMoniker": "D:\\Programming\\Practice\\CHIP8\\CHIP8\\CPU.h",
+              "RelativeDocumentMoniker": "CHIP8\\CPU.h",
+              "ToolTip": "D:\\Programming\\Practice\\CHIP8\\CHIP8\\CPU.h",
+              "RelativeToolTip": "CHIP8\\CPU.h",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAFMAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-07-15T13:25:30.216Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "main.cpp",
+              "DocumentMoniker": "D:\\Programming\\Practice\\CHIP8\\CHIP8\\main.cpp",
+              "RelativeDocumentMoniker": "CHIP8\\main.cpp",
+              "ToolTip": "D:\\Programming\\Practice\\CHIP8\\CHIP8\\main.cpp",
+              "RelativeToolTip": "CHIP8\\main.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-07-15T13:27:10.046Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "chip.cpp",
               "DocumentMoniker": "D:\\Programming\\Practice\\CHIP8\\CHIP8\\chip.cpp",
               "RelativeDocumentMoniker": "CHIP8\\chip.cpp",
               "ToolTip": "D:\\Programming\\Practice\\CHIP8\\CHIP8\\chip.cpp",
               "RelativeToolTip": "CHIP8\\chip.cpp",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAAAHYAAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAAAH8AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-07-14T13:52:24.356Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CPU.cpp",
+              "DocumentMoniker": "D:\\Programming\\Practice\\CHIP8\\CHIP8\\CPU.cpp",
+              "RelativeDocumentMoniker": "CHIP8\\CPU.cpp",
+              "ToolTip": "D:\\Programming\\Practice\\CHIP8\\CHIP8\\CPU.cpp",
+              "RelativeToolTip": "CHIP8\\CPU.cpp",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACkAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-07-15T13:21:34.712Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "display.cpp",
+              "DocumentMoniker": "D:\\Programming\\Practice\\CHIP8\\CHIP8\\display.cpp",
+              "RelativeDocumentMoniker": "CHIP8\\display.cpp",
+              "ToolTip": "D:\\Programming\\Practice\\CHIP8\\CHIP8\\display.cpp",
+              "RelativeToolTip": "CHIP8\\display.cpp",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAADwAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-07-15T14:54:35.305Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "constants.h",
+              "DocumentMoniker": "D:\\Programming\\Practice\\CHIP8\\CHIP8\\constants.h",
+              "RelativeDocumentMoniker": "CHIP8\\constants.h",
+              "ToolTip": "D:\\Programming\\Practice\\CHIP8\\CHIP8\\constants.h",
+              "RelativeToolTip": "CHIP8\\constants.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-07-15T13:11:59.344Z",
               "EditorCaption": ""
             },
             {
@@ -76,33 +145,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "display.cpp",
-              "DocumentMoniker": "D:\\Programming\\Practice\\CHIP8\\CHIP8\\display.cpp",
-              "RelativeDocumentMoniker": "CHIP8\\display.cpp",
-              "ToolTip": "D:\\Programming\\Practice\\CHIP8\\CHIP8\\display.cpp",
-              "RelativeToolTip": "CHIP8\\display.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-07-15T14:54:35.305Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CPU.h",
-              "DocumentMoniker": "D:\\Programming\\Practice\\CHIP8\\CHIP8\\CPU.h",
-              "RelativeDocumentMoniker": "CHIP8\\CPU.h",
-              "ToolTip": "D:\\Programming\\Practice\\CHIP8\\CHIP8\\CPU.h",
-              "RelativeToolTip": "CHIP8\\CPU.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-07-15T13:25:30.216Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 7,
               "Title": "display.h",
               "DocumentMoniker": "D:\\Programming\\Practice\\CHIP8\\CHIP8\\display.h",
               "RelativeDocumentMoniker": "CHIP8\\display.h",
@@ -115,58 +158,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "CPU.cpp",
-              "DocumentMoniker": "D:\\Programming\\Practice\\CHIP8\\CHIP8\\CPU.cpp",
-              "RelativeDocumentMoniker": "CHIP8\\CPU.cpp",
-              "ToolTip": "D:\\Programming\\Practice\\CHIP8\\CHIP8\\CPU.cpp",
-              "RelativeToolTip": "CHIP8\\CPU.cpp",
-              "ViewState": "AgIAADEBAAAAAAAAAAAAAGcBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-07-15T13:21:34.712Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "main.cpp",
-              "DocumentMoniker": "D:\\Programming\\Practice\\CHIP8\\CHIP8\\main.cpp",
-              "RelativeDocumentMoniker": "CHIP8\\main.cpp",
-              "ToolTip": "D:\\Programming\\Practice\\CHIP8\\CHIP8\\main.cpp",
-              "RelativeToolTip": "CHIP8\\main.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-07-15T13:27:10.046Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "chip.h",
               "DocumentMoniker": "D:\\Programming\\Practice\\CHIP8\\CHIP8\\chip.h",
               "RelativeDocumentMoniker": "CHIP8\\chip.h",
               "ToolTip": "D:\\Programming\\Practice\\CHIP8\\CHIP8\\chip.h",
               "RelativeToolTip": "CHIP8\\chip.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACAAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-07-14T13:52:18.735Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "constants.h",
-              "DocumentMoniker": "D:\\Programming\\Practice\\CHIP8\\CHIP8\\constants.h",
-              "RelativeDocumentMoniker": "CHIP8\\constants.h",
-              "ToolTip": "D:\\Programming\\Practice\\CHIP8\\CHIP8\\constants.h",
-              "RelativeToolTip": "CHIP8\\constants.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-07-15T13:11:59.344Z",
               "EditorCaption": ""
             }
           ]

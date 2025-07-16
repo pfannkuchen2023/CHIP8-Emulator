@@ -70,6 +70,8 @@ public:
 	void OP_Fx55(); //LD [I], Vx
 	void OP_Fx65(); //LD Vx, [I]
 
+	void printToFile(std::string name);
+
 	
 private:
 	//Create a reference to chip

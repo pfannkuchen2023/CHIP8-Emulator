@@ -26,7 +26,7 @@ Display::Display() {
 	//Creat a renderer
 	//-1 means we use first available rendering driver (default)
 	//0 means no special behaviour
-	renderer = SDL_CreateRenderer(window, -1, 0);
+	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
 	texture = SDL_CreateTexture(
 		renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_STREAMING, VIDEO_WIDTH, VIDEO_HEIGHT);
@@ -60,10 +60,7 @@ void Display::calculateRes() {
 	//Smallest integeter scale that can fit within the window
 	int scale = std::min(windowWidth / VIDEO_WIDTH, windowHeight / VIDEO_HEIGHT);
 
-	//Set renderWidth
-	int renderWidth = VIDEO_WIDTH * scale;
-	//Set renderHeight
-	int renderHeight = VIDEO_HEIGHT * scale;
+	SCREEN_MULTIPLIER = scale;
 
 	////Calculate teh rectangle position to be centered
 	//drawRect.x = (windowWidth - renderWidth) / 2;

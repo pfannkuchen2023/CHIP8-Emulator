@@ -1,6 +1,7 @@
 #include <iostream>
 #include<random>
 #include<chrono>
+#include <fstream>
 
 #include "CPU.h"
 #include"chip.h"
@@ -21,17 +22,26 @@ void CPU::CPUInit() {
 	//Set memory pointer
 	index = 0;
 	memset(registers, 0, sizeof(registers)); //clear registers
-
+	//reset the display to be blank
+	memset(chip.video, 0, sizeof(chip.video));
 	//Set timers
 	delayTimer = 0;
 	soundTimer = 0;
 	std::cout << "CPU Initialized" << std::endl;
+	std::ofstream outfile("log.txt", std::ios::trunc); // trunc = truncate
+	// File is now empty
+	outfile << "CPU INIT" << std::endl;
+	outfile.close();
 }
 
 //Fetch the opcode
 void CPU::fetchDecodeExecuteOpcode() {
 	opcode = (chip.memory[pc] << 8u | chip.memory[pc + 1]); //grab two bytes and combine
 	//Increase the pc by 2
+	std::ofstream outfile("log.txt", std::ios::app);
+	outfile << "opcode is: " << opcode << std::endl;
+	outfile << "PC is: " << pc << std::endl;
+	outfile.close();
 	pc += 2;
 	(this->*(table[(opcode & 0xF000u) >> 12u]))();
 }
@@ -128,6 +138,7 @@ void CPU::OP_NULL() {
 void CPU::OP_00E0() {
 	//Set all the values in video array to 0
 	memset(chip.video, 0, sizeof(chip.video)); 
+	printToFile("OP_00E0");
 	//This will point to address of start of video and set all the memory addresses in this array to 0
 }
 
@@ -137,14 +148,16 @@ void CPU::OP_00EE() {
 	Put this back into PC*/
 	--sp;
 	pc = stack[sp];
+	printToFile("OP_00EE");
 }
 
 //Jump to location nnn and set PC to nnn
 void CPU::OP_1nnn() {
 	//Jump does not remember origin so no stack interaction needed
 	uint16_t address = opcode & 0x0FFFu;
-	pc = address;
 
+	pc = address;
+	printToFile("OP_1nnn");
 }
 //Call subroutine at nnn
 void CPU::OP_2nnn() {
@@ -152,9 +165,11 @@ void CPU::OP_2nnn() {
 	We did pc+=2 in cycle() so current PC holds next instruction after CALL which is correct
 	Do not want to return to CALL instruction as it would be infinite loop*/
 	uint16_t address = opcode & 0x0FFFu;
+
 	stack[sp] = pc;
 	++sp;
 	pc = address;
+	printToFile("OP_2nnn");
 }
 
 //Skip next instruction if Vx == kk
@@ -162,9 +177,12 @@ void CPU::OP_3xkk() {
 	/*PC already incremented by 2 in Cylce() so increment by 2 again to skip instruction*/
 	uint8_t Vx = (opcode & 0x0F00u) >> 8u;
 	uint8_t byte = opcode & 0x00FFu;
-	if (registers[Vx] == byte){
+
+	if (registers[Vx] == byte)
+	{
 		pc += 2;
 	}
+	printToFile("OP_3xkk");
 }
 
 //Skip next instruction if Vx != kk
@@ -172,9 +190,12 @@ void CPU::OP_4xkk() {
 	/*PC already incremented by 2 in Cylce() so increment by 2 again to skip instruction*/
 	uint8_t Vx = (opcode & 0x0F00u) >> 8u;
 	uint8_t byte = opcode & 0x00FFu;
-	if (registers[Vx] != byte) {
+
+	if (registers[Vx] != byte)
+	{
 		pc += 2;
 	}
+	printToFile("OP_4xkk");
 }
 
 //Skip next instruction if Vx = Vy
@@ -182,10 +203,12 @@ void CPU::OP_5xy0() {
 	/*PC already incremented by 2 in Cylce() so increment by 2 again to skip instruction*/
 	uint8_t Vx = (opcode & 0x0F00u) >> 8u;
 	uint8_t Vy = (opcode & 0x00F0u) >> 4u;
-	if (registers[Vx] == registers[Vy]) {
+
+	if (registers[Vx] == registers[Vy])
+	{
 		pc += 2;
 	}
-
+	printToFile("OP_5xy0");
 }
 
 //Set Vx == kk
@@ -195,6 +218,7 @@ void CPU::OP_6xkk() {
 	uint8_t byte = opcode & 0x00FFu;
 
 	registers[Vx] = byte;
+	printToFile("OP_6xkk");
 }
 
 //Set Vx = Vx + kk
@@ -204,6 +228,7 @@ void CPU::OP_7xkk() {
 	uint8_t byte = opcode & 0x00FFu;
 
 	registers[Vx] += byte;
+	printToFile("OP_7xkk");
 }
 
 //Set Vx = Vy
@@ -211,7 +236,9 @@ void CPU::OP_8xy0() {
 	/*PC already incremented by 2 in Cylce() so increment by 2 again to skip instruction*/
 	uint8_t Vx = (opcode & 0x0F00u) >> 8u;
 	uint8_t Vy = (opcode & 0x00F0u) >> 4u;
+
 	registers[Vx] = registers[Vy];
+	printToFile("OP_8xy0");
 }
 
 //Set Vx = Vx or Vy
@@ -219,8 +246,9 @@ void CPU::OP_8xy1() {
 	/*PC already incremented by 2 in Cylce() so increment by 2 again to skip instruction*/
 	uint8_t Vx = (opcode & 0x0F00u) >> 8u;
 	uint8_t Vy = (opcode & 0x00F0u) >> 4u;
-	registers[Vx] |= registers[Vy];
 
+	registers[Vx] |= registers[Vy];
+	printToFile("OP_8xy1");
 }
 
 //Set Vx = Vx and Vy
@@ -228,7 +256,9 @@ void CPU::OP_8xy2() {
 	/*PC already incremented by 2 in Cylce() so increment by 2 again to skip instruction*/
 	uint8_t Vx = (opcode & 0x0F00u) >> 8u;
 	uint8_t Vy = (opcode & 0x00F0u) >> 4u;
+
 	registers[Vx] &= registers[Vy];
+	printToFile("OP_8xy2");
 }
 
 //Set Vx = Vx XOR Vy
@@ -236,7 +266,9 @@ void CPU::OP_8xy3() {
 	/*PC already incremented by 2 in Cylce() so increment by 2 again to skip instruction*/
 	uint8_t Vx = (opcode & 0x0F00u) >> 8u;
 	uint8_t Vy = (opcode & 0x00F0u) >> 4u;
+
 	registers[Vx] ^= registers[Vy];
+	printToFile("OP_8xy3");
 }
 
 //Set Vx = Vx + Vy , set Vf = Carry
@@ -244,14 +276,20 @@ void CPU::OP_8xy4() {
 	/*PC already incremented by 2 in Cylce() so increment by 2 again to skip instruction*/
 	uint8_t Vx = (opcode & 0x0F00u) >> 8u;
 	uint8_t Vy = (opcode & 0x00F0u) >> 4u;
+
 	uint16_t sum = registers[Vx] + registers[Vy];
-	if (sum > 255) {
+
+	if (sum > 255U)
+	{
 		registers[0xF] = 1;
 	}
-	else {
+	else
+	{
 		registers[0xF] = 0;
 	}
+
 	registers[Vx] = sum & 0xFFu;
+	printToFile("OP_8xy4");
 }
 
 //Set Vx = Vx - Vy, set VF to NOT Borrow
@@ -261,14 +299,17 @@ void CPU::OP_8xy5() {
 	uint8_t Vx = (opcode & 0x0F00u) >> 8u;
 	uint8_t Vy = (opcode & 0x00F0u) >> 4u;
 
-	if (registers[Vx] > registers[Vy]) {
+	if (registers[Vx] > registers[Vy])
+	{
 		registers[0xF] = 1;
 	}
-	else {
+	else
+	{
 		registers[0xF] = 0;
 	}
-	registers[Vx] -= registers[Vy];
 
+	registers[Vx] -= registers[Vy];
+	printToFile("OP_8xy5");
 }
 
 //Set Vx = Vx SHR 1
@@ -277,8 +318,12 @@ void CPU::OP_8xy5() {
 void CPU::OP_8xy6() {
 	/*PC already incremented by 2 in Cylce() so increment by 2 again to skip instruction*/
 	uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+
+	// Save LSB in VF
 	registers[0xF] = (registers[Vx] & 0x1u);
+
 	registers[Vx] >>= 1;
+	printToFile("OP_8xy6");
 }
 
 //Set Vx = Vy - Vx set VF to Not Borrow
@@ -289,15 +334,17 @@ void CPU::OP_8xy7() {
 	uint8_t Vx = (opcode & 0x0F00u) >> 8u;
 	uint8_t Vy = (opcode & 0x00F0u) >> 4u;
 
-	if (registers[Vx] < registers[Vy]) {
-
+	if (registers[Vy] > registers[Vx])
+	{
 		registers[0xF] = 1;
 	}
-	else {
+	else
+	{
 		registers[0xF] = 0;
 	}
-	registers[Vx] = registers[Vy] - registers[Vx];
 
+	registers[Vx] = registers[Vy] - registers[Vx];
+	printToFile("OP_8xy7");
 }
 
 //Set Vx = Vx SHL 1
@@ -307,9 +354,11 @@ void CPU::OP_8xyE() {
 	/*PC already incremented by 2 in Cylce() so increment by 2 again to skip instruction*/
 	uint8_t Vx = (opcode & 0x0F00u) >> 8u;
 
-	//Save MSB in VF
+	// Save MSB in VF
 	registers[0xF] = (registers[Vx] & 0x80u) >> 7u;
+
 	registers[Vx] <<= 1;
+	printToFile("OP_8xyE");
 }
 
 //Skip the next instruction if Vx != Vy
@@ -318,28 +367,36 @@ void CPU::OP_9xy0() {
 	uint8_t Vx = (opcode & 0x0F00u) >> 8u;
 	uint8_t Vy = (opcode & 0x00F0u) >> 4u;
 
-	if (registers[Vx] != registers[Vy]) {
+	if (registers[Vx] != registers[Vy])
+	{
 		pc += 2;
 	}
+	printToFile("OP_9xy0");
 }
 
 //Set I = nnn
 void CPU::OP_Annn() {
-	uint16_t address = opcode & 0X0FFFu;
+	uint16_t address = opcode & 0x0FFFu;
+
 	index = address;
+	printToFile("OP_Annn");
 }
 
 //Jump to location nnn + V0
 void CPU::OP_Bnnn() {
 	uint16_t address = opcode & 0x0FFFu;
+
 	pc = registers[0] + address;
+	printToFile("OP_Bnnn");
 }
 
 //Set Vx = random byte and kk
 void CPU::OP_Cxkk() {
 	uint8_t Vx = (opcode & 0x0F00u) >> 8u;
 	uint8_t byte = opcode & 0x00FFu;
-	registers[Vx] = getRandomByte() & byte;
+
+	registers[Vx] = randByte(randGen) & byte;
+	printToFile("OP_Cxkk");
 }
 
 //Display n-byute sprite starting at memory location I at (Vx, Vy), set VF = collision
@@ -350,63 +407,107 @@ void CPU::OP_Dxyn() {
 	
 	Just XOR screen pixel with 0xFFFFFFFF to XOR it with sprite pixel (on)*/
 
-	uint8_t Vx = (opcode & 0x0F00u) << 8u;
-	uint8_t Vy = (opcode & 0x00F0u) << 4u;
+	uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+	uint8_t Vy = (opcode & 0x00F0u) >> 4u;
 	uint8_t height = opcode & 0x000Fu;
 
-	//Ensure that we do not exceed screen boundaries
+	// Wrap if going beyond screen boundaries
 	uint8_t xPos = registers[Vx] % VIDEO_WIDTH;
 	uint8_t yPos = registers[Vy] % VIDEO_HEIGHT;
 
-	//Set VF to 0
 	registers[0xF] = 0;
 
-	//Loop over all 
-	for (unsigned int row = 0; row < height; ++row) {
+	for (unsigned int row = 0; row < height; ++row)
+	{
 		uint8_t spriteByte = chip.memory[index + row];
 
-		for (unsigned int col = 0; col < 8; ++col) {
+		for (unsigned int col = 0; col < 8; ++col)
+		{
 			uint8_t spritePixel = spriteByte & (0x80u >> col);
-			//Point to memory address of the index in video array at  (yPos + row) * chip.VIDEO_WIDTH + (xPos + col)
 			uint32_t* screenPixel = &chip.video[(yPos + row) * VIDEO_WIDTH + (xPos + col)];
-		
-			//Is the sprite pixel on at this point
-			if (spritePixel) {
-				//Is the screen pixel also on?
-				if (*screenPixel == 0xFFFFFFFF) {
-					registers[0xF] = 1; //set VF to 1 if collision
+
+			// Sprite pixel is on
+			if (spritePixel)
+			{
+				// Screen pixel also on - collision
+				if (*screenPixel == 0xFFFFFFFF)
+				{
+					registers[0xF] = 1;
 				}
-				//NOW XOR WITH THE SPRITE PIXEL WHICH IS ON
+
+				// Effectively XOR with the sprite pixel
 				*screenPixel ^= 0xFFFFFFFF;
 			}
 		}
 	}
+
+
+	//uint8_t Vx = (opcode & 0x0F00u) << 8u;
+	//uint8_t Vy = (opcode & 0x00F0u) << 4u;
+	//uint8_t height = opcode & 0x000Fu;
+
+	////Ensure that we do not exceed screen boundaries
+	//uint8_t xPos = registers[Vx] % VIDEO_WIDTH;
+	//uint8_t yPos = registers[Vy] % VIDEO_HEIGHT;
+
+	////Set VF to 0
+	//registers[0xF] = 0;
+
+	////Loop over all 
+	//for (unsigned int row = 0; row < height; ++row) {
+	//	uint8_t spriteByte = chip.memory[index + row];
+
+	//	for (unsigned int col = 0; col < 8; ++col) {
+	//		uint8_t spritePixel = spriteByte & (0x80u >> col);
+	//		//Point to memory address of the index in video array at  (yPos + row) * chip.VIDEO_WIDTH + (xPos + col)
+	//		uint32_t* screenPixel = &chip.video[(yPos + row) * VIDEO_WIDTH + (xPos + col)];
+	//	
+	//		//Is the sprite pixel on at this point
+	//		if (spritePixel) {
+	//			//Is the screen pixel also on?
+	//			if (*screenPixel == 0xFFFFFFFF) {
+	//				registers[0xF] = 1; //set VF to 1 if collision
+	//			}
+	//			//NOW XOR WITH THE SPRITE PIXEL WHICH IS ON
+	//			*screenPixel ^= 0xFFFFFFFF;
+	//		}
+	//	}
+	//}
+	printToFile("OP_Dxyn");
 }
 
 //Skip next instruction if key with the value of Vx is pressed
 void CPU::OP_Ex9E() {
 	uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+
 	uint8_t key = registers[Vx];
-	if (chip.keypad[key]) 
+
+	if (chip.keypad[key])
 	{
 		pc += 2;
 	}
+	printToFile("OP_EX9E");
 }
 
 //Skip next instruction if key with value Vx not pressed
 void CPU::OP_ExA1() {
 	uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+
 	uint8_t key = registers[Vx];
+
 	if (!chip.keypad[key])
 	{
 		pc += 2;
 	}
+	printToFile("OP_ExA1");
 }
 
 //Set Vx = delay timer value
 void CPU::OP_Fx07() {
 	uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+
 	registers[Vx] = delayTimer;
+	printToFile("OP_Fx07");
 }
 
 //Wait for a key press, store the value in Vx
@@ -425,24 +526,29 @@ void CPU::OP_Fx0A() {
 	if (!keyFound) {
 		pc -= 2;
 	}
+	printToFile("OP_Fx0A");
 }
 
 //Set delay timer to Vx
 void CPU::OP_Fx15() {
 	uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+
 	delayTimer = registers[Vx];
+	printToFile("OP_Fx15");
 }
 
 //Set sound timer to Vx
 void CPU::OP_Fx18() {
 	uint8_t Vx = (opcode & 0x0F00u) >> 8u;
 	soundTimer = registers[Vx];
+	printToFile("OP_Fx18");
 }
 
 //Set I = I + Vx
 void CPU::OP_Fx1E() {
 	uint8_t Vx = (opcode & 0x0F00u) >> 8u;
 	index += registers[Vx];
+	printToFile("OP_Fx1E");
 }
 
 //Set I = location of sprite for digit Vx
@@ -450,13 +556,15 @@ void CPU::OP_Fx29() {
 	/*Font characters start at 0x50 and 5 bytes each, so can get address of first byte of any character by taking offset from start address*/
 	uint8_t Vx = (opcode & 0x0F00u) >> 8u;
 	uint8_t digit = registers[Vx];
+
 	index = FONTSET_START_ADDRESS + (5 * digit);
+	printToFile("OP_Fx29");
 }
 
 //Store BCD representation of Vx in memory location I, I+1, I+2
 //Interpreter takes decimal value of Vx and places hundreds digit in memory at location in I, the tens digit at location I+1 and the ones digit at location I+2
 void CPU::OP_Fx33() {
-	uint8_t Vx = (opcode & 0x0F00u) << 8u;
+	uint8_t Vx = (opcode & 0x0F00u) >> 8u;
 	uint8_t value = registers[Vx];
 	//Need to get the tens, hundreds and ones
 	chip.memory[index + 2] = value % 10; //ones
@@ -467,23 +575,35 @@ void CPU::OP_Fx33() {
 	value /= 10;
 
 	//Hundreds
-	chip.memory[index] = value & 10;
+	chip.memory[index] = value % 10;
+	printToFile("OP_Fx33");
 }
 
 //Store registers V0 through Cx in memory starting at location I
 void CPU::OP_Fx55() {
 	uint8_t Vx = (opcode & 0x0F00u) >> 8u;
-	for (uint8_t i = 0; i <= Vx; ++i) {
+
+	for (uint8_t i = 0; i <= Vx; ++i)
+	{
 		chip.memory[index + i] = registers[i];
 	}
+	printToFile("OP_Fx55");
 }
 
 //Read registers V0 through Vx from memory starting at I
 void CPU::OP_Fx65() {
 	uint8_t Vx = (opcode & 0x0F00u) >> 8u;
-	for (uint8_t i = 0; i <= Vx; ++i) {
+
+	for (uint8_t i = 0; i <= Vx; ++i)
+	{
 		registers[i] = chip.memory[index + i];
 	}
+	printToFile("OP_Fx65");
 }
 
 
+void CPU::printToFile(std::string name) {
+	std::ofstream outfile("log.txt", std::ios::app);
+	outfile << "RAN: " << name << std::endl;
+	outfile.close();
+}

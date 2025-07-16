@@ -26,6 +26,7 @@ bool Chip::loadROM(char const* filename) {
 	//Check if the file is open
 	if (!file.is_open()) {
 		std::cerr << "Failed to open ROM: " << filename << std::endl;
+		loaded = false;
 		return false;
 	}
 	
@@ -33,12 +34,14 @@ bool Chip::loadROM(char const* filename) {
 	std::streamsize romSize = file.tellg();
 	if (romSize <= 0) {
 		std::cerr << "ROM Empty or error occured" << std::endl;
+		loaded = false;
 		return false;
 	}
 
 	//Check the file is not too large
 	if (romSize > (MEMORY_SIZE - START_ADDRESS)) {
 		std::cerr << "ROM too big for memory!" << std::endl;
+		loaded = false;
 		return false;
 	}
 
@@ -48,6 +51,7 @@ bool Chip::loadROM(char const* filename) {
 
 	if (!file.read(buffer.data(), romSize)) {
 		std::cerr << "Failed to read ROM file into buffer" << std::endl;
+		loaded = false;
 		return false;
 	}
 
@@ -57,6 +61,7 @@ bool Chip::loadROM(char const* filename) {
 	}
 	std::cout << "READ ROM SUCCESS" << std::endl;
 	resetEngine(); //Reset the CPU and set PC to start address
+	loaded = true;
 	return true;
 }
 
@@ -78,9 +83,10 @@ void Chip::CPUCycle() {
 	while (running) {
 		SDL_Event event;
 		handleEvent(event);
-	
+		std::cout << "LOADED: " << loaded << std::endl;
 		//If not paused and ROM loaded, then we decrease timers if non-zero
 		if (pause == false && loaded == true) {
+			std::cout << "PAUSE FALSE LOADED TRUE" << std::endl;
 			if (cpu.delayTimer > 0) {
 				cpu.delayTimer--;
 			}	
@@ -91,15 +97,17 @@ void Chip::CPUCycle() {
 				cpu.fetchDecodeExecuteOpcode(); //Fetch, decode and execute the opcode
 			}	
 		}
-		int videoPitch = sizeof(video[0]) * VIDEO_WIDTH;
-		
-		for (int i = 0; i < (sizeof(video) /32); i++) {
+		int totalElements = sizeof(video) / sizeof(video[0]); // = 64 * 32
+		int rows = totalElements / 32;
+		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < 32; j++) {
-				std::cout << "i: " << i << " j: " << j << std::endl;
+				//std::cout << "i: " << i << " j: " << j << std::endl;
 				outfile << video[i * 32 + j];
 			}
 			outfile << "\n";
 		}
+
+		int videoPitch = sizeof(video[0]) * VIDEO_WIDTH;		
 
 		//DISPLAY THE RESULTS ON THE SCREEN
 		display.update(video, videoPitch);
@@ -149,6 +157,7 @@ void Chip::handleEvent(SDL_Event &event) {
 		}
 		//Re-sizing the window
 		else if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_RESIZED) {
+			display.calculateRes();
 			std::cout << "resize" << std::endl;
 		}
 		else if (event.type == SDL_KEYDOWN) {
@@ -161,6 +170,9 @@ void Chip::handleEvent(SDL_Event &event) {
 			else if (event.key.keysym.sym == SDLK_SPACE) {
 				std::cout << "pause" << std::endl;
 				pauseEmu();
+			}
+			else if (event.key.keysym.sym == SDLK_RETURN) {
+				resetEngine();
 			}
 			else {
 				auto it = keymap.find(event.key.keysym.sym);
