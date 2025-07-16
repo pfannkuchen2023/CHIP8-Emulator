@@ -36,7 +36,7 @@ Thumbs.db
 *.ch8
 
 #Inside CHIP8
-.src/
+.CHIP8/
 log.txt
 x64/
 *.vcxproj.user
