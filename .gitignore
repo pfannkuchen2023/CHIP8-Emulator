@@ -1,29 +1,35 @@
-# Build results
+# Ignore build artifacts
+/build/
+/x64/
+/Debug/
+/Release/
+/bin/
+/CMakeFiles/
+/CMakeCache.txt
+Makefile
+cmake_install.cmake
+
+# Visual Studio files
+.vs/
+*.vcxproj*
+*.sln
+*.user
+*.suo
+*.ncb
+*.opensdf
+*.sdf
+*.cache
+*.db
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs and temp
+*.log
 *.obj
 *.exe
-*.log
-*.pdb
 *.ilk
+*.pdb
 *.idb
-*.tmp
-*.cache
-*.vspscc
-*.vssscc
-*.suo
-*.user
-*.VC.db
-*.VC.opendb
-*.ipch/
-*.aps
-
-# Visual Studio folders
-.vs/
-Debug/
-Release/
-x64/
-ipch/
-out/
-
-# Other
-*.sdf
-*.opensdf
+*.class
