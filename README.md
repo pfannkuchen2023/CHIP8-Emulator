@@ -28,6 +28,33 @@ Keypad                   Keyboard
 Requires:
 - SDL2
 - CMAKE
+## Instructions
+### Install Dependencies
+#### Windows
+- CMake
+- Visual Studio or MinGW
+
+## Clone Repository and Generate Files
+```
+git clone --recurse-submodules https://github.com/pfannkuchen2023/CHIP8-Emulator.git
+cd CHIP8-Emulator
+```
+#### MinGW
+```
+cmake -G "MinGW Makefiles" -B build -S ./
+```
+Generate and compile project files:
+```
+cmake --build ./
+```
+Next navigate to executable file
+```
+cd bin/Debug
+```
+To run the CHIP8 Emulator you need to state the SCREEN_MULIPLIER as by default it will be 64x32 pixels. You also need to state the path to the .ch8 file you want to run
+```
+chip8 10 path/to/file.ch8
+```
 
 ## Known Issues
 - Some games like Brick have flickering player
