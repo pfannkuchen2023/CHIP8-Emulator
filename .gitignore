@@ -38,4 +38,5 @@ Thumbs.db
 #Inside CHIP8
 .src/
 log.txt
+x64/
 *.vcxproj.user
