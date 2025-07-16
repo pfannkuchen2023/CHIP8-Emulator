@@ -144,11 +144,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="chip.cpp" />
+    <ClCompile Include="constants.cpp" />
     <ClCompile Include="CPU.cpp" />
+    <ClCompile Include="display.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="chip.h" />
+    <ClInclude Include="constants.h" />
+    <ClInclude Include="CPU.h" />
+    <ClInclude Include="display.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
