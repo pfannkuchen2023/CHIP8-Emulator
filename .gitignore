@@ -33,3 +33,9 @@ Thumbs.db
 *.pdb
 *.idb
 *.class
+*.ch8
+
+#Inside CHIP8
+.CHIP8/
+*.txt
+*.vcxproj.user
