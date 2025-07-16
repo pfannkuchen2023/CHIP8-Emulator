@@ -55,7 +55,14 @@ To run the CHIP8 Emulator you need to state the SCREEN_MULIPLIER as by default i
 ```
 chip8 10 path/to/file.ch8
 ```
-
+#### Visual Studio
+Visual Studio users must generate project files, then compile manually in Visual Studio
+```
+cmake -B build -S ./
+cd build
+cmake --build ./
+```
+Navigate to the generated build folder, open the .sln file and configure teh project to use "CHIP8" as startup project.
 ## Known Issues
 - Some games like Brick have flickering player
 
